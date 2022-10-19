@@ -57,7 +57,7 @@ function logWinner() {
 }
 
 function game() {
-    for (let i = 3; playerScore < i && compScore < i;) {
+    while (playerScore < 3 && compScore < 3) {
         let compChoice = getCompChoice();
         let playerChoice = prompt("Rock, Paper, or Scissors?:").toLowerCase();
         console.log(playRound(compChoice, playerChoice));
