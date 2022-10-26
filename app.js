@@ -1,11 +1,6 @@
 let compScore = 0;
 let playerScore = 0;
 
-function getCompChoice() {
-    const choices = ["rock", "paper", "scissors"]
-    return choices[Math.floor(Math.random()*choices.length)];
-}
-
 function addCompScore() {
     compScore++;
 }
@@ -13,6 +8,52 @@ function addCompScore() {
 function addPlayerScore() {
     playerScore++;
 }
+
+const scoreDisplay = document.querySelector('.score');
+
+function updateScoreDisplay() {
+    scoreDisplay.textContent = `${playerScore} - ${compScore}`;
+}
+
+function checkWinner() {
+    if (playerScore === 3) {
+        textDisplay.textContent = "Congratulations, you won!";
+    } else if (compScore === 3) {
+        textDisplay.textContent = "Sorry, you lost.";
+    }
+}
+
+function getCompChoice() {
+    const choices = ["rock", "paper", "scissors"]
+    return choices[Math.floor(Math.random()*choices.length)];
+}
+
+const textDisplay = document.querySelector('.text');
+
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+
+rock.addEventListener('click', () => {
+    let compChoice = getCompChoice();
+    textDisplay.textContent = playRound(compChoice, 'rock');
+    updateScoreDisplay();
+    checkWinner();
+});
+
+paper.addEventListener('click', () => {
+    let compChoice = getCompChoice();
+    console.log(playRound(compChoice, 'paper'));
+    updateScoreDisplay();
+    checkWinner();
+});
+
+scissors.addEventListener('click', () => {
+    let compChoice = getCompChoice();
+    console.log(playRound(compChoice, 'scissors'));
+    updateScoreDisplay();
+    checkWinner();
+});
 
 function playRound(compChoice, playerChoice) {
     if (compChoice === "rock") {
@@ -47,24 +88,3 @@ function playRound(compChoice, playerChoice) {
         }
     }
 }
-
-function logWinner() {
-    if (playerScore === 3) {
-        console.log("Congratulations, you won!")
-    } else if (compScore === 3) {
-        console.log("Sorry, you lost.")
-    }
-}
-
-function game() {
-    while (playerScore < 3 && compScore < 3) {
-        let compChoice = getCompChoice();
-        let playerChoice = prompt("Rock, Paper, or Scissors?:").toLowerCase();
-        console.log(playRound(compChoice, playerChoice));
-        console.log(`The score is ${playerScore} - ${compScore}`)
-    }
-
-    logWinner();
-}
-
-game();

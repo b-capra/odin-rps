@@ -1,0 +1,50 @@
+body {
+  background-color: #EEE3CB;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container {
+  background-color: #b7c4cf;
+  width: 1200px;
+  height: 675px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 300px;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  height: 375px;
+}
+
+.text, .scoredisplay {
+  display: block;
+  text-align: center;
+  font-size: 30px;
+}
+
+.btn {
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+}
+
+.attribution {
+  font-size: 10px;
+}
