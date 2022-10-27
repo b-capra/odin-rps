@@ -15,11 +15,15 @@ function updateScoreDisplay() {
     scoreDisplay.textContent = `${playerScore} - ${compScore}`;
 }
 
+let finished = false;
+
 function checkWinner() {
-    if (playerScore === 3) {
+    if (playerScore === 5) {
         textDisplay.textContent = "Congratulations, you won!";
-    } else if (compScore === 3) {
+        finished = true;
+    } else if (compScore === 5) {
         textDisplay.textContent = "Sorry, you lost.";
+        finished = true;
     }
 }
 
@@ -35,6 +39,11 @@ const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
 
 rock.addEventListener('click', () => {
+    if (finished) {
+        playerScore = 0;
+        compScore = 0;
+        finished = false;
+    }
     let compChoice = getCompChoice();
     textDisplay.textContent = playRound(compChoice, 'rock');
     updateScoreDisplay();
@@ -42,15 +51,25 @@ rock.addEventListener('click', () => {
 });
 
 paper.addEventListener('click', () => {
+    if (finished) {
+        playerScore = 0;
+        compScore = 0;
+        finished = false;
+    }
     let compChoice = getCompChoice();
-    console.log(playRound(compChoice, 'paper'));
+    textDisplay.textContent = playRound(compChoice, 'paper');
     updateScoreDisplay();
     checkWinner();
 });
 
 scissors.addEventListener('click', () => {
+    if (finished) {
+        playerScore = 0;
+        compScore = 0;
+        finished = false;
+    }
     let compChoice = getCompChoice();
-    console.log(playRound(compChoice, 'scissors'));
+    textDisplay.textContent = playRound(compChoice, 'scissors');
     updateScoreDisplay();
     checkWinner();
 });
